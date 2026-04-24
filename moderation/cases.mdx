@@ -1,0 +1,109 @@
+---
+title: "View and manage moderation case history with fault"
+description: "Every moderation action creates a numbered case. View, filter, and update cases — and review warning history — with fault's case commands."
+---
+
+Every time you run a moderation command — warn, kick, ban, timeout, mute, or any other action — fault automatically creates a numbered case. Cases are your permanent audit trail: they record who did what, to whom, when, and why.
+
+## How cases work
+
+When a moderation action is taken:
+
+1. A case is created and assigned an incrementing ID (e.g. `#42`).
+2. If a mod-log channel is configured via `,setup`, the case is posted there immediately.
+3. The target receives a DM with the action, moderator, reason, and (if applicable) duration.
+
+Cases are never deleted automatically. You can update the reason on any case at any time.
+
+### What a case contains
+
+| Field | Description |
+|---|---|
+| **Case ID** | Unique incrementing number per server |
+| **Action** | The moderation action taken (warn, kick, ban, etc.) |
+| **User** | The target's username and Discord ID |
+| **Moderator** | The moderator who ran the command |
+| **Reason** | The reason provided, or "no reason provided" |
+| **Created** | Timestamp of when the action was taken |
+
+## Viewing cases
+
+### View a specific case
+
+```text
+,case 42
+```
+
+Displays the full case record for the given ID.
+
+### View all server cases
+
+```text
+,cases
+```
+
+Lists every case on the server, paginated in groups of five, sorted newest first.
+
+### Filter by member
+
+```text
+,cases @user
+```
+
+Shows only cases where the specified member is the target. Useful for reviewing a member's full moderation history before taking further action.
+
+## Updating a case reason
+
+If you forgot to include a reason when running a command, or want to clarify it later:
+
+```text
+,reason 42 actually raiding — confirmed with logs
+```
+
+This updates the reason stored on case `#42`. The mod-log post is not retroactively edited, but the case record itself is updated.
+
+<Note>
+Updating a reason requires the **Manage Messages** permission.
+</Note>
+
+## Warning-specific commands
+
+Warnings are standard cases with the action type `warn`. In addition to the general case commands, fault provides dedicated warning commands:
+
+### View warnings for a member
+
+```text
+,warnings @user
+```
+
+Filters the case list to show only warnings for that member.
+
+### View all server warnings
+
+```text
+,warnings
+```
+
+Shows all warning cases across the entire server.
+
+### Clear all warnings for a member
+
+```text
+,clearwarns @user
+```
+
+Permanently deletes all warning cases for that member. This does not affect other case types (kicks, bans, etc.).
+
+<Warning>
+Clearing warnings is irreversible. The deleted cases cannot be recovered.
+</Warning>
+
+## Mod-log channel
+
+To have cases posted automatically, configure a mod-log channel:
+
+```text
+,setup modlog #mod-log
+```
+
+If no mod-log is configured, cases are still created and retrievable via `,case` and `,cases` — they just won't be broadcast to a channel. See [Moderation overview](/moderation/overview) for full setup instructions.

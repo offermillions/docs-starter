@@ -1,0 +1,106 @@
+---
+title: 'Interactive paginated embeds with navigation buttons'
+description: 'Turn any existing embed into a multi-page interactive message with back and forward navigation buttons that members can click through in Discord.'
+---
+
+Pagination lets you attach multiple pages to an existing embed message. Members navigate between pages using ⬅ and ➡ buttons that fault adds to the message. This is useful for multi-section guides, FAQs, rules documents, or any content that would be too long for a single embed.
+
+## Creating a paginated embed
+
+<Steps>
+  <Step title="Post an embed in your server">
+    Use `,createembed` or any other method to post an embed message in a channel. Pagination only works on messages that already contain an embed.
+
+    ```text
+    ,createembed {embed}{title: Welcome Guide}{description: Page one content here.}
+    ```
+  </Step>
+
+  <Step title="Get the message link">
+    Right-click the embed message and select **Copy Message Link**. The link looks like:
+
+    ```text
+    https://discord.com/channels/123456789/987654321/111222333
+    ```
+  </Step>
+
+  <Step title="Enable pagination on the message">
+    Pass the message link to `,pagination set` to add navigation buttons to the embed.
+
+    ```text
+    ,pagination set https://discord.com/channels/123456789/987654321/111222333
+    ```
+
+    This converts the embed into the first page and attaches ⬅ ➡ buttons.
+  </Step>
+
+  <Step title="Add more pages">
+    Add each additional page using the script engine. Pages are appended in order.
+
+    ```text
+    ,pagination add https://discord.com/channels/123456789/987654321/111222333 {embed}{title: Page Two}{description: Content for the second page.}
+    ```
+
+    Repeat this step for every page you want to add.
+  </Step>
+</Steps>
+
+<Note>
+  Requires the **Manage Messages** permission.
+</Note>
+
+## Managing pages
+
+### Update a page
+
+Replace the content of a specific page. fault shows you a preview of the current page and asks for confirmation before saving.
+
+```text
+,pagination update (message link) (page number) (script)
+```
+
+### Remove a page
+
+Delete a single page by its number. Remaining pages renumber automatically.
+
+```text
+,pagination remove (message link) (page number)
+```
+
+### Remove all pagination from a message
+
+Strip the navigation buttons and pagination config from a message entirely, leaving the current page's embed in place.
+
+```text
+,pagination delete (message link)
+```
+
+## Server-wide management
+
+List every paginated embed in your server:
+
+```text
+,pagination list
+```
+
+Remove all pagination setups in the server at once:
+
+```text
+,pagination reset
+```
+
+<Warning>
+  `,pagination reset` removes pagination from every message in the server. This cannot be undone.
+</Warning>
+
+## Restoring navigation buttons
+
+If the ⬅ ➡ buttons are removed from a paginated message (for example, after a bot restart or accidental removal), you can restore them without reconfiguring everything:
+
+```text
+,pagination restorereactions (message link)
+```
+
+---
+
+Alias: `,pages` works the same as `,pagination`.

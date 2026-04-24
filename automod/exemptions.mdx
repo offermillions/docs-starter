@@ -1,0 +1,75 @@
+---
+title: "Exempt roles and channels from fault AutoMod rules"
+description: "Prevent AutoMod rules from applying to specific roles or channels, or fully disable and remove fault-managed rules you no longer need."
+---
+
+Sometimes a rule that's right for most of your server isn't right for every role or channel. fault lets you add exemptions to any fault-managed rule so that specific roles or channels are excluded from enforcement.
+
+<Note>
+  Exemptions only work on fault-managed rules (those prefixed with `[fault]`). All commands require the **Manage Server** permission.
+</Note>
+
+## Exempting a role or channel
+
+```text
+,automod exempt (rule) (role or channel)
+```
+
+Pass the rule name and either a role mention or a channel mention. You can run the command multiple times to add more than one exemption to the same rule.
+
+**Valid rule names:** `antispam`, `antiinvites`, `mentions`, `keywords`
+
+**Examples:**
+
+Exempt the `@Moderator` role from the keyword filter:
+
+```text
+,automod exempt keywords @Moderator
+```
+
+Exempt `#staff` from the anti-invites rule so staff can share invite links:
+
+```text
+,automod exempt antiinvites #staff
+```
+
+Exempt `@Admins` from the mention limit rule:
+
+```text
+,automod exempt mentions @Admins
+```
+
+<Tip>
+  You can exempt both roles and channels from the same rule by running the command twice — once with the role and once with the channel.
+</Tip>
+
+## Disabling a single rule
+
+To completely disable and delete one fault-managed rule:
+
+```text
+,automod disable (rule)
+```
+
+**Examples:**
+
+```text
+,automod disable antispam
+,automod disable antiinvites
+,automod disable mentions
+,automod disable keywords
+```
+
+Disabling a rule removes it from your server's AutoMod settings entirely. You can re-enable it at any time by running the original setup command again.
+
+## Removing all fault-managed rules
+
+To delete every fault-managed rule at once:
+
+```text
+,automod reset
+```
+
+<Warning>
+  `,automod reset` removes all `[fault]`-prefixed rules permanently, including any exemptions you've configured. Rules you created manually in Server Settings are not affected.
+</Warning>

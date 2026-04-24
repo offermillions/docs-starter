@@ -1,0 +1,110 @@
+---
+title: "Lock, hide, and set slowmode on channels with fault"
+description: "Lock channels to prevent @everyone from sending, hide channels from specific roles or members, and configure slowmode — all with a single fault command."
+---
+
+fault provides three channel control commands: `,lock` / `,unlock` to prevent or restore message sending, `,hide` / `,reveal` to toggle channel visibility for a role or member, and `,slowmode` to rate-limit messages. All three commands require the **Manage Channels** permission.
+
+## Locking and unlocking channels
+
+Locking a channel sets the `@everyone` role's **Send Messages** permission to `Deny`, preventing regular members from posting. Unlocking restores it.
+
+### Lock the current channel
+
+```text
+,lock
+```
+
+### Lock a specific channel with a reason
+
+```text
+,lock #general raid in progress
+```
+
+### Unlock a channel
+
+```text
+,unlock #general all clear
+```
+
+If no channel is specified, the command applies to the channel where it is run.
+
+<Note>
+Lock and unlock work on **category channels** too. When you target a category, fault updates every text channel inside it at once.
+</Note>
+
+<Tip>
+Include a reason when locking — it appears in the audit log and helps your team understand the context later.
+</Tip>
+
+## Hiding and revealing channels
+
+`,hide` sets the `view_channel` permission to `Deny` for the specified role or member, making the channel invisible to them. `,reveal` (also available as `,unhide`) reverses this.
+
+### Hide the current channel from @everyone
+
+```text
+,hide
+```
+
+### Hide a specific channel from a role
+
+```text
+,hide #announcements @Members
+```
+
+### Hide a channel from a specific member
+
+```text
+,hide #staff @username
+```
+
+### Reveal a hidden channel
+
+```text
+,reveal #announcements @Members
+```
+
+When no role or member is specified, fault defaults to the `@everyone` role. When no channel is specified, the command targets the current channel.
+
+<Note>
+Like lock and unlock, hide and reveal also work on **category channels** — all text channels inside the category are updated simultaneously.
+</Note>
+
+<Warning>
+Hiding a channel from @everyone while other roles still have explicit `view_channel = Allow` overrides will not hide it from members with those roles. Adjust role-specific overrides separately if needed.
+</Warning>
+
+## Setting slowmode
+
+Slowmode limits how often members can send messages in a channel. Omit the duration to disable slowmode if it is currently active.
+
+### Set slowmode to 30 seconds
+
+```text
+,slowmode 30s
+```
+
+### Set slowmode to 2 minutes
+
+```text
+,slowmode 2m
+```
+
+### Set slowmode to 1 hour
+
+```text
+,slowmode 1h
+```
+
+### Disable slowmode
+
+```text
+,slowmode
+```
+
+Duration format: `s` for seconds, `m` for minutes, `h` for hours. The maximum is **6 hours** (`6h` or `21600s`). Slowmode always applies to the current channel.
+
+<Note>
+Slowmode only applies to the channel where you run the command. It cannot be set on a category.
+</Note>

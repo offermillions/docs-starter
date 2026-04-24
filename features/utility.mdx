@@ -1,0 +1,69 @@
+---
+title: 'Snipe deleted messages, AFK status, and embed builder'
+description: 'Recover deleted and edited messages, set an AFK status with auto-clear, preview embeds with the script engine, and browse all available commands.'
+---
+
+fault includes a set of utility commands for everyday server management: snipe deleted and edited messages, set AFK statuses, build embeds, and more.
+
+## Snipe
+
+Snipe commands let you recover recently deleted or edited messages from a channel. Sniped messages are stored in memory and expire after **1 hour**.
+
+```text
+,snipe
+,snipe 2
+```
+
+Each channel keeps a list of recently deleted messages. Pass an index to go further back — `,snipe` shows the most recent, `,snipe 2` shows the one before that, and so on.
+
+| Command | Description |
+|---|---|
+| `,snipe [index]` | View a recently deleted message |
+| `,editsnipe [index]` | View a recently edited message (shows before and after) |
+| `,reactionsnipe [index]` | View a recently removed reaction |
+| `,clearsnipes` | Clear all snipes from the channel (requires **Manage Messages**) |
+
+Aliases: `,s`, `,es`, `,rs`, `,cs`
+
+## AFK
+
+Set yourself as AFK so fault can notify anyone who mentions you while you're away.
+
+```text
+,afk
+,afk Grabbing lunch, back in 30
+```
+
+If you don't provide a reason, the bot uses "AFK" by default. When someone mentions you, fault replies in that channel letting them know you're away and showing your reason.
+
+Your AFK status clears automatically the next time you send a message in any channel.
+
+## Embed builder
+
+Preview what an embed will look like using the script engine:
+
+```text
+,createembed {embed}{title: Hello World}{description: This is a test embed.}{color: #5865F2}
+```
+
+Aliases: `,ce`, `,embed`
+
+This is useful for testing scripts before using them in sticky messages, level-up messages, ticket welcome messages, or pagination pages.
+
+## Script variables
+
+See every variable available in the script engine, including user, server, and channel variables:
+
+```text
+,variables
+```
+
+## Help
+
+Browse all of fault's commands or get detailed help for a specific one:
+
+```text
+,help
+,help ticket
+,help levels
+```

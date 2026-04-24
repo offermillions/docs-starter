@@ -1,0 +1,95 @@
+---
+title: "Bulk delete messages using fault's purge subcommands"
+description: "Delete up to 1000 messages at once with targeted filters — by user, bots only, links, file attachments, regex patterns, and more."
+---
+
+The `,purge` command (also available as `,clear`) lets you bulk-delete messages from the current channel. You can delete any messages at once, or narrow the deletion using one of many filter subcommands — by author, content, message type, and more.
+
+All purge commands require the **Manage Messages** permission.
+
+## Basic usage
+
+```text
+,purge 50
+```
+
+Deletes the 50 most recent messages in the channel, including your command message. The amount must be between **1** and **1000**.
+
+<Note>
+Discord only allows bulk deletion of messages up to 14 days old. Messages older than that are silently skipped.
+</Note>
+
+## Subcommand reference
+
+| Subcommand | Required args | Optional args | What it deletes |
+|---|---|---|---|
+| `purge user` | `(user)` | `[amount]` | Messages from a specific user |
+| `purge bots` | — | `[amount]` | Messages from bots only |
+| `purge humans` | — | `[amount]` | Messages from non-bots only |
+| `purge contains` | `(text)` | `[amount]` | Messages containing the given text |
+| `purge links` | — | `[amount]` | Messages with `http://` or `https://` URLs |
+| `purge invites` | — | `[amount]` | Messages with Discord invite links |
+| `purge embeds` | — | `[amount]` | Messages with embeds |
+| `purge files` | — | `[amount]` | Messages with file attachments |
+| `purge mentions` | — | `[amount]` | Messages with user or role mentions |
+| `purge startswith` | `(text)` | `[amount]` | Messages beginning with the given text |
+| `purge endswith` | `(text)` | `[amount]` | Messages ending with the given text |
+| `purge reactions` | — | `[amount]` | Messages that have reactions |
+| `purge stickers` | — | `[amount]` | Messages containing stickers |
+| `purge regex` | `(pattern)` | `[amount]` | Messages matching a regex pattern |
+
+When `[amount]` is omitted, most subcommands default to scanning the last **100** messages.
+
+## Examples
+
+**Delete the last 200 messages from a specific user:**
+
+```text
+,purge user @username 200
+```
+
+**Clear all bot messages (useful after a bot incident):**
+
+```text
+,purge bots 500
+```
+
+**Remove messages that contain a spam keyword:**
+
+```text
+,purge contains free nitro 100
+```
+
+**Wipe Discord invite links posted by members:**
+
+```text
+,purge invites
+```
+
+**Delete messages that start with a bot prefix to clean up command spam:**
+
+```text
+,purge startswith ! 50
+```
+
+**Delete all messages with file attachments:**
+
+```text
+,purge files 150
+```
+
+**Use a regex to remove messages matching a pattern:**
+
+```text
+,purge regex ^\d{4,} 100
+```
+
+This example removes any message that starts with four or more digits.
+
+<Tip>
+Use `purge user` after kicking or banning someone to quickly remove their recent messages without affecting other messages in the channel.
+</Tip>
+
+<Warning>
+Purged messages cannot be recovered. Double-check your filter and amount before running the command in active channels.
+</Warning>

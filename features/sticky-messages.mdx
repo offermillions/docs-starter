@@ -1,0 +1,54 @@
+---
+title: 'Sticky messages that stay at the bottom of a channel'
+description: 'Pin a message to the bottom of any channel so it always appears after the latest message, keeping rules and announcements visible without pinning.'
+---
+
+A sticky message is a bot-managed message that always appears at the bottom of a channel. Every time a member sends a new message, fault deletes the previous sticky and reposts it, keeping it visible below the latest activity.
+
+This is useful for channel rules, reminders, ongoing announcements, or anything else you want members to see without using Discord's limited pins.
+
+## Adding a sticky message
+
+```text
+,sticky add #rules Read the rules before chatting. Breaking them will result in a mute.
+```
+
+The message content uses the [script engine](/scripting/overview), so you can create rich embeds with custom colors, titles, and fields instead of plain text.
+
+<Note>
+  Requires the **Manage Channels** and **Manage Messages** permissions.
+</Note>
+
+## Removing a sticky message
+
+```text
+,sticky remove #rules
+```
+
+This removes both the sticky configuration and the most recently posted sticky message from the channel.
+
+## Viewing a channel's sticky script
+
+Check the current script configured for a channel:
+
+```text
+,sticky view #rules
+```
+
+This shows the raw script, not the rendered output.
+
+## Listing all sticky messages
+
+See every channel in your server that has a sticky message configured:
+
+```text
+,sticky list
+```
+
+---
+
+Alias: `,stick` works the same as `,sticky`.
+
+<Tip>
+  Use the script engine to build an embed for your sticky message. Check out [scripting variables](/scripting/overview) to include dynamic content like server name or member count.
+</Tip>

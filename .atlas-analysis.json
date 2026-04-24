@@ -1,0 +1,111 @@
+{
+  "projectType": "saas",
+  "projectName": "fault",
+  "projectDescription": "A feature-rich Discord bot providing moderation, auto-moderation, leveling, tickets, and server configuration tools for Discord server administrators.",
+  "theme": "luma",
+  "primaryColor": "#394b79",
+  "lightColor": null,
+  "darkColor": null,
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "introduction",
+              "quickstart"
+            ]
+          },
+          {
+            "group": "Moderation",
+            "pages": [
+              "moderation/overview",
+              "moderation/cases",
+              "moderation/purge",
+              "moderation/channels"
+            ]
+          },
+          {
+            "group": "Auto Moderation",
+            "pages": [
+              "automod/overview",
+              "automod/antispam",
+              "automod/keywords",
+              "automod/exemptions"
+            ]
+          },
+          {
+            "group": "Server Setup",
+            "pages": [
+              "configuration/welcome-goodbye",
+              "configuration/autorole",
+              "configuration/prefix",
+              "configuration/fake-permissions"
+            ]
+          },
+          {
+            "group": "Features",
+            "pages": [
+              "features/tickets",
+              "features/levels",
+              "features/sticky-messages",
+              "features/pagination",
+              "features/utility"
+            ]
+          },
+          {
+            "group": "Scripting",
+            "pages": [
+              "scripting/overview",
+              "scripting/variables"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "keyFeatures": [
+    "Full moderation suite (warn, kick, ban, timeout, mute, role management)",
+    "Native Discord AutoMod integration for spam, invites, mentions, and custom keywords",
+    "Ticket system with panels, topics, transcripts, priority, and staff claiming",
+    "XP-based leveling system with customizable role rewards and leaderboards",
+    "Welcome, goodbye, and boost messages with a rich embed scripting engine",
+    "Autorole assignment for new members",
+    "Sticky messages that stay pinned at the bottom of channels",
+    "Interactive paginated embeds",
+    "Fake permissions system for fine-grained command access control",
+    "Message snipe, edit snipe, and reaction snipe commands",
+    "AFK status with automatic mention notifications",
+    "Custom server prefix support"
+  ],
+  "publicApiSurface": [
+    "warn / warnings / clearwarns",
+    "kick / ban / unban / hardban / softban",
+    "timeout / untimeout",
+    "mute / unmute / imute / iunmute / rmute / runmute",
+    "purge (and subcommands: user, bots, humans, contains, links, invites, embeds, files, mentions, regex)",
+    "lock / unlock / hide / reveal / slowmode",
+    "role",
+    "nick",
+    "case / cases / reason",
+    "setup (and subcommands: modlog, muted, imuted, rmuted, view)",
+    "automod (and subcommands: list, antispam, antiinvites, mentions, keywords add/remove/list, exempt, disable, reset)",
+    "ticket (and subcommands: panel create/send/delete/list, topic add/remove/list, category, role, logs, limit, message, naming, settings, close, add, remove, rename, claim, unclaim, transfer, priority)",
+    "levels (and subcommands: unlock, lock, ignore, list, add, remove, roles, stackroles, message, messagemode, setrate, sync, leaderboard)",
+    "rank / setlevel / setxp",
+    "welcome (add, remove, view, clear, list)",
+    "goodbye (add, remove, view, clear, list)",
+    "boost (add, remove, view, clear, list)",
+    "autorole (add, remove, clear, list)",
+    "pagination (set, add, update, remove, delete, reset, list, restorereactions)",
+    "sticky (add, remove, view, list)",
+    "prefix / prefix set / prefix reset",
+    "fakepermissions (add, remove, list, reset)",
+    "snipe / editsnipe / reactionsnipe / clearsnipes",
+    "afk",
+    "createembed / variables",
+    "help"
+  ]
+}

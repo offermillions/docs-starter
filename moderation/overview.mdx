@@ -1,0 +1,111 @@
+---
+title: "fault moderation: warn, ban, mute, and role commands"
+description: "Set up a mod-log channel and mute roles, then warn, kick, ban, timeout, and mute members — every action is logged as a case and DMs the target."
+---
+
+fault's moderation system gives you a full set of member action commands out of the box. Run `,setup` once to create the required roles and mod-log channel automatically, then use any moderation command — each action creates a permanent case record and sends the target a DM with the details.
+
+## First-time setup
+
+Run `,setup` before using mute commands. fault will create the following resources if they do not already exist:
+
+- A **mod-log** text channel (visible only to staff with Manage Server, Manage Guild, or Moderate Members)
+- A **Muted** role
+- An **Image Muted** role
+- A **Reaction Muted** role
+
+```text
+,setup
+```
+
+To review what is currently configured:
+
+```text
+,setup view
+```
+
+You can also set each resource individually:
+
+| Command | Description |
+|---|---|
+| `,setup modlog (channel)` | Set the mod-log channel |
+| `,setup muted (role)` | Set the Muted role |
+| `,setup imuted (role)` | Set the Image Muted role |
+| `,setup rmuted (role)` | Set the Reaction Muted role |
+
+<Note>
+`,setup` requires the **Manage Server** permission.
+</Note>
+
+## Member action commands
+
+Every command below creates a case in fault's case system and, where possible, sends the target a DM notifying them of the action and reason.
+
+### Warnings
+
+```text
+,warn @user spamming in general
+,warnings @user
+,clearwarns @user
+```
+
+### Kicks and bans
+
+```text
+,kick @user repeated rule violations
+,ban @user raiding
+,unban 123456789012345678 appealed
+,hardban @user known raider
+,softban @user clear messages without permanent ban
+```
+
+`hardban` deletes 7 days of messages. `softban` bans and immediately unbans the user, which clears their recent messages without keeping them banned.
+
+### Timeouts
+
+```text
+,timeout @user 10m spamming
+,timeout @user 2h repeated offences
+,untimeout @user appeal approved
+```
+
+Duration format: `10s`, `5m`, `2h`, `1d`. Maximum is **28 days**.
+
+### Mutes (role-based)
+
+These commands require roles configured via `,setup`.
+
+```text
+,mute @user        — applies the Muted role
+,unmute @user
+,imute @user       — applies the Image Muted role
+,iunmute @user
+,rmute @user       — applies the Reaction Muted role
+,runmute @user
+```
+
+### Nickname and role management
+
+```text
+,nick @user NewName     — change nickname
+,nick @user             — clear nickname
+,role @user @Member     — toggle a role on or off
+```
+
+## Permission requirements
+
+| Command(s) | Required permission |
+|---|---|
+| `warn`, `warnings`, `clearwarns` | Manage Messages |
+| `kick` | Kick Members |
+| `ban`, `unban`, `hardban`, `softban` | Ban Members |
+| `timeout`, `untimeout`, `mute`, `unmute`, `imute`, `iunmute`, `rmute`, `runmute` | Moderate Members |
+| `nick` | Manage Nicknames |
+| `role` | Manage Roles |
+| `purge` | Manage Messages |
+| `lock`, `unlock`, `hide`, `reveal`, `slowmode` | Manage Channels |
+| `setup` | Manage Server |
+
+## Cases and mod-log
+
+Every action automatically creates a numbered case. The case is posted to your configured mod-log channel and includes the action type, target, moderator, reason, and timestamp. You can view and update cases at any time — see [Cases](/moderation/cases) for details.

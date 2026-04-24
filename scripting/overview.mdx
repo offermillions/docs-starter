@@ -1,0 +1,150 @@
+---
+title: "Embed scripting engine: build rich Discord messages"
+description: "Use the fault script engine to send plain text or fully formatted embeds with colors, fields, thumbnails, and buttons — anywhere a script is accepted."
+---
+
+The fault script engine lets you compose Discord messages using a simple tag syntax. Instead of sending plain text, you can build multi-field embeds with custom colors, images, and clickable buttons — all from a single command argument. Scripts work anywhere fault accepts a `(script)` parameter.
+
+## Where scripts are used
+
+You can use the fault script engine in:
+
+- **Welcome messages** — `,welcome add #channel (script)`
+- **Goodbye messages** — `,goodbye add #channel (script)`
+- **Boost messages** — `,boost add #channel (script)`
+- **Ticket messages** — `,ticket message (panel) (script)`
+- **Sticky messages** — `,sticky add #channel (script)`
+- **Pagination pages** — `,pagination add (link) (script)`
+- **Level-up messages** — `,levels message (template)`
+- **Embed preview** — `,createembed (script)`
+
+## Script syntax
+
+Scripts are made up of **nodes** — tags in the format `{node: value}`. You chain them together in a single line; fault parses them left to right and builds the message.
+
+```text
+{node: value}{node: value}{node: value}
+```
+
+Some nodes (like `{embed}`) take no value. Others accept multiple parts separated by `&&`:
+
+```text
+{footer: Footer text && https://example.com/icon.png}
+```
+
+## Node reference
+
+### Content and text
+
+| Node | Description |
+|---|---|
+| `{content: text}` | Plain text message body |
+| `{message: text}` | Alias for `{content: ...}` |
+
+### Embed nodes
+
+Start an embed with `{embed}`, then add nodes after it. Each node is applied to the most recently opened embed. You can open multiple embeds in one script.
+
+| Node | Description |
+|---|---|
+| `{embed}` | Start a new embed |
+| `{title: text}` | Embed title |
+| `{description: text}` | Embed description (body text) |
+| `{color: #hex}` | Embed accent color (hex code) |
+| `{url: https://...}` | URL that makes the title clickable |
+| `{thumbnail: https://...}` | Small image in the top-right corner |
+| `{image: https://...}` | Large image below the description |
+| `{footer: text}` | Embed footer text |
+| `{footer: text && icon_url}` | Footer with an icon |
+| `{author: name}` | Author line at the top of the embed |
+| `{author: name && url && icon_url}` | Author with link and icon |
+| `{field: name && value}` | Add an embed field |
+| `{field: name && value && inline}` | Add an inline embed field |
+
+### Buttons
+
+| Node | Description |
+|---|---|
+| `{button: Label && https://url}` | Add a link button below the message |
+| `{button: Label && https://url && emoji}` | Link button with an emoji |
+
+### Other
+
+| Node | Description |
+|---|---|
+| `{sticker: name}` | Send a sticker by name |
+
+## Variables
+
+Inside any node value, you can use variables like `{user.mention}` or `{guild.member_count}`. fault replaces them at runtime with live data about the user, server, or channel.
+
+See [Variables](/scripting/variables) for the full list. You can also run `,variables` in Discord to browse them in-bot.
+
+## Examples
+
+### Simple text message
+
+```text
+{content: Hello {user.mention}!}
+```
+
+Sends a plain text message mentioning the user.
+
+---
+
+### Basic embed
+
+```text
+{embed}{description: Welcome {user.mention} to {guild}!}
+```
+
+Sends an embed with a description. No color or title — minimal and clean.
+
+---
+
+### Rich welcome embed
+
+```text
+{embed}{title: Welcome!}{description: Welcome {user.mention} to **{guild}**! You are member #{guild.member_count}.}{color: #394b79}{thumbnail: {user.avatar}}{footer: Joined {guild.name}}
+```
+
+This produces an embed with:
+- A title
+- A description mentioning the user and their member position
+- A custom accent color
+- The user's avatar as a thumbnail
+- A footer showing the server name
+
+---
+
+### Embed with an inline field
+
+```text
+{embed}{description: Hello!}{field: Member Count && {guild.member_count} && inline}
+```
+
+Adds a field below the description. The `inline` keyword places it side-by-side with other inline fields.
+
+---
+
+### Embed with a button
+
+```text
+{embed}{description: Check out our rules!}{button: Rules && https://discord.com/channels/...}
+```
+
+Adds a clickable link button beneath the embed.
+
+---
+
+### Multiple embeds
+
+You can stack multiple embeds in one script by opening a new `{embed}` after the previous one:
+
+```text
+{embed}{title: First embed}{description: Content here.}{embed}{title: Second embed}{description: More content.}
+```
+
+<Tip>
+  Use `,createembed (script)` to preview any script in the current channel before saving it to a welcome message or sticky. This lets you iterate without committing to a configuration change.
+</Tip>

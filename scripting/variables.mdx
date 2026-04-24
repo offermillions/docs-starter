@@ -1,0 +1,110 @@
+---
+title: "Scripting variables: user, guild, and channel data"
+description: "Full reference of every variable available in fault scripts — covering member info, server stats, and channel details, replaced at runtime."
+---
+
+Variables let you pull live data into any fault script. Wrap a variable name in curly braces and fault replaces it automatically when the message is sent — no extra configuration needed.
+
+You can use variables inside any node value: descriptions, titles, footers, field values, button labels, and more. Run `,variables` in your Discord server to see this list in-bot.
+
+<AccordionGroup>
+  <Accordion title="User variables">
+    These variables reflect the member who triggered the message — the person who joined, left, boosted, or opened a ticket.
+
+    | Variable | Description |
+    |---|---|
+    | `{user}` | Full username |
+    | `{user.id}` | User ID |
+    | `{user.name}` | Username |
+    | `{user.username}` | Username without discriminator |
+    | `{user.global_name}` | Global display name |
+    | `{user.display_name}` | Server display name, or username if none is set |
+    | `{user.nick}` | Server nickname, or display name if none is set |
+    | `{user.mention}` | User mention (`@username`) |
+    | `{user.discriminator}` | Discriminator (the four-digit suffix) |
+    | `{user.tag}` | Full tag (`name#0000`) |
+    | `{user.avatar}` | Avatar URL |
+    | `{user.avatar_url}` | Avatar URL |
+    | `{user.default_avatar}` | Default avatar URL |
+    | `{user.color}` | Role color |
+    | `{user.bot}` | Whether the user is a bot |
+    | `{user.status}` | Online status |
+    | `{user.mobile}` | Whether the user is on mobile |
+    | `{user.pending}` | Whether the user is pending membership screening |
+    | `{user.created_at}` | Account creation date |
+    | `{user.created_at_timestamp}` | Account creation date as a Unix timestamp |
+    | `{user.joined_at}` | Date the user joined the server |
+    | `{user.joined_at_timestamp}` | Server join date as a Unix timestamp |
+    | `{user.top_role}` | Mention of the user's highest role |
+    | `{user.top_role_id}` | ID of the user's highest role |
+    | `{user.top_role_name}` | Name of the user's highest role |
+    | `{user.roles}` | All role mentions |
+    | `{user.role_ids}` | All role IDs |
+    | `{user.role_names}` | All role names |
+    | `{user.role_count}` | Number of roles the user has |
+    | `{user.booster}` | Whether the user is currently boosting the server |
+    | `{user.booster_since}` | Date the user started boosting |
+    | `{user.booster_since_timestamp}` | Boost start date as a Unix timestamp |
+  </Accordion>
+
+  <Accordion title="Guild variables">
+    These variables reflect the server where the message is sent.
+
+    | Variable | Description |
+    |---|---|
+    | `{guild}` | Server name |
+    | `{guild.id}` | Server ID |
+    | `{guild.name}` | Server name |
+    | `{guild.icon}` | Server icon URL |
+    | `{guild.icon_url}` | Server icon URL |
+    | `{guild.banner}` | Server banner URL |
+    | `{guild.banner_url}` | Server banner URL |
+    | `{guild.splash}` | Server splash URL |
+    | `{guild.description}` | Server description |
+    | `{guild.vanity_url}` | Vanity invite code |
+    | `{guild.verification_level}` | Verification level |
+    | `{guild.member_count}` | Total member count |
+    | `{guild.boost_count}` | Number of active boosts |
+    | `{guild.boost_level}` | Current boost tier (0–3) |
+    | `{guild.emoji_count}` | Number of custom emojis |
+    | `{guild.sticker_count}` | Number of custom stickers |
+    | `{guild.role_count}` | Number of roles |
+    | `{guild.channel_count}` | Total channel count |
+    | `{guild.text_channel_count}` | Number of text channels |
+    | `{guild.voice_channel_count}` | Number of voice channels |
+    | `{guild.category_channel_count}` | Number of category channels |
+    | `{guild.created_at}` | Server creation date |
+    | `{guild.created_at_timestamp}` | Server creation date as a Unix timestamp |
+    | `{guild.owner}` | Owner's username |
+    | `{guild.owner_id}` | Owner's user ID |
+    | `{guild.owner_mention}` | Mention of the server owner |
+    | `{guild.owner_name}` | Owner's display name |
+    | `{guild.owner_avatar}` | Owner's avatar URL |
+    | `{guild.roles}` | All role mentions |
+    | `{guild.role_ids}` | All role IDs |
+  </Accordion>
+
+  <Accordion title="Channel variables">
+    These variables reflect the channel where the message is sent.
+
+    | Variable | Description |
+    |---|---|
+    | `{channel}` | Channel mention |
+    | `{channel.id}` | Channel ID |
+    | `{channel.name}` | Channel name |
+    | `{channel.mention}` | Channel mention |
+    | `{channel.type}` | Channel type |
+    | `{channel.topic}` | Channel topic |
+    | `{channel.nsfw}` | Whether the channel is marked NSFW |
+    | `{channel.position}` | Channel position in the sidebar |
+    | `{channel.slowmode}` | Slowmode delay in seconds |
+    | `{channel.category}` | Name of the parent category |
+    | `{channel.category_id}` | ID of the parent category |
+    | `{channel.created_at}` | Channel creation date |
+    | `{channel.created_at_timestamp}` | Channel creation date as a Unix timestamp |
+  </Accordion>
+</AccordionGroup>
+
+<Note>
+  **Level-up messages only:** The variable `{level.new_rank}` is available exclusively in `,levels message` templates. It outputs the level number the member just reached.
+</Note>

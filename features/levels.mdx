@@ -1,0 +1,165 @@
+---
+title: 'XP leveling system with role rewards and leaderboard'
+description: 'Reward active members with XP, automatic role rewards at set levels, a leaderboard, and customizable level-up messages with the script engine.'
+---
+
+The fault leveling system tracks XP for every message your members send and automatically assigns role rewards when they hit certain levels. You can customize the XP rate, level-up messages, and whether members stack all earned roles or only hold their current one.
+
+## How XP works
+
+Members earn a random amount of XP between **15 and 25** for each message they send. The amount of XP needed to reach each level follows this formula:
+
+```
+XP needed = 5 × level² + 50 × level + 100
+```
+
+Level-up notifications begin at level 4.
+
+## Enabling and disabling XP tracking
+
+XP tracking is off by default. Enable it with:
+
+```text
+,levels unlock
+```
+
+To pause XP tracking without losing any data:
+
+```text
+,levels lock
+```
+
+## Ignoring channels and roles
+
+Prevent specific channels or roles from earning XP. Run the same command again to unignore.
+
+```text
+,levels ignore #bot-commands
+,levels ignore @Muted
+```
+
+View all ignored channels and roles:
+
+```text
+,levels list
+```
+
+## Role rewards
+
+Assign a Discord role to members automatically when they reach a specific level.
+
+```text
+,levels add @Level10 10
+,levels add @Level50 50
+```
+
+Remove a role reward at a level:
+
+```text
+,levels remove 10
+```
+
+View all configured role rewards and the XP required for each:
+
+```text
+,levels roles
+```
+
+After adding new role rewards, sync roles for all existing members:
+
+```text
+,levels sync
+```
+
+<Note>
+  `,levels sync` applies role rewards retroactively to members who already meet the level threshold. Run this whenever you add new rewards.
+</Note>
+
+### Stacking roles
+
+By default, role stacking is **on** — members keep every role reward they've earned as they level up. You can disable this so members only hold the role for their current level:
+
+```text
+,levels stackroles off
+```
+
+Turn stacking back on at any time:
+
+```text
+,levels stackroles on
+```
+
+## Custom level-up messages
+
+Set a custom message that the bot sends when a member levels up:
+
+```text
+,levels message {user.mention} just reached level {level.new_rank}! 🎉
+```
+
+Available variables:
+
+| Variable | Description |
+|---|---|
+| `{user.mention}` | Mentions the member who leveled up |
+| `{level.new_rank}` | The level the member just reached |
+
+The message template also supports the full script engine for embeds and advanced formatting.
+
+### Where level-up messages are sent
+
+Configure where the level-up notification appears:
+
+```text
+,levels messagemode pm
+,levels messagemode context
+,levels messagemode none
+,levels messagemode #level-ups
+```
+
+| Mode | Behavior |
+|---|---|
+| `pm` | DM the member directly |
+| `context` | Send in the channel where the member leveled up |
+| `none` | Disable level-up messages entirely |
+| `#channel` | Always send to a specific channel |
+
+## XP rate multiplier
+
+Adjust how quickly members earn XP. The default multiplier is `1.0`.
+
+```text
+,levels setrate 2.0
+```
+
+The multiplier accepts values from `0.1` to `10.0`. Setting it to `2.0` doubles XP gain; `0.5` halves it.
+
+## Member commands
+
+Any member can check their progress or browse the leaderboard:
+
+```text
+,rank
+,rank @username
+```
+
+```text
+,levels leaderboard
+```
+
+The leaderboard shows the top 100 members by XP. Aliases: `,lb` and `,top`.
+
+## Admin overrides
+
+Force-set a member's level or XP directly, bypassing normal earn mechanics:
+
+```text
+,setlevel @username 25
+,setxp @username 5000
+```
+
+Valid level range: 0–500. These commands require **Manage Server** permission.
+
+---
+
+Aliases: `,level` and `,xp` work the same as `,levels`.

@@ -1,0 +1,65 @@
+---
+title: "Autorole: automatically assign roles to new members"
+description: "Automatically assign up to 5 roles to members when they join your server. Roles are only assigned to humans — bots are skipped automatically."
+---
+
+Autorole automatically assigns one or more roles to every human member who joins your server. This is useful for granting a default member role, access to channels, or any other role you want new members to have from the moment they arrive.
+
+<Note>
+  All autorole commands require the **Manage Roles** permission.
+</Note>
+
+## Add a role
+
+```text
+,autorole add (role)
+```
+
+You can add up to 5 roles to the autorole list. When a new member joins, fault assigns all configured roles at once.
+
+```text
+,autorole add @Member
+,autorole add @Newcomer
+```
+
+**Role hierarchy requirements:**
+
+- The role must be below the bot's highest role in the role list.
+- The role must be below your own highest role (unless you are the server owner).
+
+<Warning>
+  If a role is above fault's highest role, the bot cannot assign it and will return an error. Drag the **fault** role above any autoroles in **Server Settings → Roles**.
+</Warning>
+
+## Remove a role
+
+```text
+,autorole remove (role)
+```
+
+Removes a role from the autorole list. Members who already received the role are not affected.
+
+```text
+,autorole remove @Newcomer
+```
+
+## List configured autoroles
+
+```text
+,autorole list
+```
+
+Shows all roles currently configured for autorole.
+
+## Clear all autoroles
+
+```text
+,autorole clear
+```
+
+Removes all roles from the autorole list. Existing members are not affected.
+
+## Notes
+
+- **Bots are skipped.** When a bot joins your server, fault does not assign autoroles to it — only human members receive them.
+- **Alias:** `ar` — for example, `,ar add @Member`.

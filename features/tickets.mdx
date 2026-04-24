@@ -1,0 +1,127 @@
+---
+title: 'Ticket system with panels, topics, and transcripts'
+description: 'Set up a fully featured support ticket system with custom panels, topic dropdowns, staff roles, and automatic HTML transcripts sent to your log channel.'
+---
+
+The fault ticket system lets your members open support tickets through button or dropdown menus. Each ticket gets its own channel, and when it's closed an HTML transcript is generated and sent to your log channel and the member who opened the ticket.
+
+## Setting up a panel
+
+<Steps>
+  <Step title="Create a panel">
+    Create a named ticket panel. You can have up to 5 panels per server.
+
+    ```text
+    ,ticket panel create support
+    ```
+  </Step>
+
+  <Step title="Configure the panel">
+    Set the category, support role, log channel, and other options before sending the panel live.
+
+    ```text
+    ,ticket category support #ticket-category
+    ,ticket role support @Support Team
+    ,ticket logs support #ticket-logs
+    ,ticket limit support 1
+    ```
+  </Step>
+
+  <Step title="Add topic options (optional)">
+    If you want members to choose a topic when opening a ticket, add up to 5 topic options. Panels with topics show a dropdown; panels without topics show a single button.
+
+    ```text
+    ,ticket topic add support "General Help" 💬
+    ,ticket topic add support "Billing" 💳
+    ,ticket topic add support "Bug Report" 🐛
+    ```
+  </Step>
+
+  <Step title="Send the panel to a channel">
+    Post the panel embed in the channel where members will open tickets.
+
+    ```text
+    ,ticket panel send support #open-a-ticket
+    ```
+  </Step>
+</Steps>
+
+## Panel configuration commands
+
+All panel configuration commands require the **Manage Server** permission.
+
+| Command | Description |
+|---|---|
+| `,ticket panel create (name)` | Create a new panel (max 5 per server) |
+| `,ticket panel send (name) (channel)` | Post the panel embed in a channel |
+| `,ticket panel delete (name)` | Delete a panel and its configuration |
+| `,ticket panel list` | List all panels |
+| `,ticket category (panel) (category)` | Set the category where ticket channels are created |
+| `,ticket role (panel) (role)` | Set the support staff role |
+| `,ticket logs (panel) (channel)` | Set the channel for transcripts and close logs |
+| `,ticket limit (panel) (number)` | Max open tickets per user (1–10) |
+| `,ticket message (panel) (script)` | Set the welcome message shown inside new tickets |
+| `,ticket naming (panel) (format)` | Channel name format — use `{user.name}` and `{user.id}` |
+| `,ticket settings (panel)` | View all settings for a panel |
+
+### Channel naming format
+
+Use `{user.name}` and `{user.id}` to include the opener's info in the channel name:
+
+```text
+,ticket naming support ticket-{user.name}
+```
+
+This would create channels like `ticket-username`.
+
+## Topic management
+
+| Command | Description |
+|---|---|
+| `,ticket topic add (panel) (label) [emoji]` | Add a topic option (max 5 per panel) |
+| `,ticket topic remove (panel) (label)` | Remove a topic option |
+| `,ticket topic list (panel)` | View all topics for a panel |
+
+<Note>
+  Panels with at least one topic show a dropdown selector. Panels with no topics show a single open button.
+</Note>
+
+## In-ticket commands
+
+These commands can be used by support staff or the member who opened the ticket.
+
+### Managing the ticket
+
+| Command | Description |
+|---|---|
+| `,ticket close [reason]` | Close the ticket and generate a transcript |
+| `,ticket add (user)` | Add a user to the ticket channel |
+| `,ticket remove (user)` | Remove a user from the ticket channel |
+| `,ticket rename (name)` | Rename the ticket channel |
+
+### Claiming and priority
+
+| Command | Description |
+|---|---|
+| `,ticket claim` | Claim the ticket as your own |
+| `,ticket unclaim` | Release your claim on the ticket |
+| `,ticket transfer (user)` | Transfer your claim to another staff member |
+| `,ticket priority (low/medium/high)` | Set the ticket priority |
+
+Setting a priority adds an emoji prefix to the channel name so staff can see urgency at a glance:
+
+- 🟢 `low` — green circle prefix
+- 🟡 `medium` — yellow circle prefix
+- 🔴 `high` — red circle prefix
+
+## Transcripts
+
+When a ticket is closed, fault automatically:
+
+1. Generates a full HTML transcript of the ticket conversation
+2. Posts the transcript in your configured log channel
+3. DMs the transcript to the member who opened the ticket
+
+<Tip>
+  Make sure your log channel is set with `,ticket logs (panel) (channel)` before going live, otherwise transcripts won't be saved anywhere.
+</Tip>

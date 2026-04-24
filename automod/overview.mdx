@@ -1,0 +1,67 @@
+---
+title: "Manage Discord AutoMod rules through fault commands"
+description: "fault creates and manages native Discord AutoMod rules through simple commands, keeping your server's moderation consistent and auditable."
+---
+
+fault integrates directly with Discord's built-in AutoMod system. Rather than building a separate moderation layer, fault creates and manages native AutoMod rules on your behalf — so rules show up in your Server Settings like any other AutoMod rule, and Discord enforces them at the platform level.
+
+<Note>
+  Your server must have **Community** enabled before you can use any automod commands. Enable it under **Server Settings → Enable Community**.
+</Note>
+
+All automod commands require the **Manage Server** permission.
+
+## Rules fault can manage
+
+fault can create and control four AutoMod rules:
+
+| Rule | Command | What it does |
+|---|---|---|
+| `antispam` | `,automod antispam` | Enables Discord's built-in spam detection |
+| `antiinvites` | `,automod antiinvites` | Blocks Discord invite links |
+| `mentions` | `,automod mentions (limit)` | Blocks messages with too many mentions |
+| `keywords` | `,automod keywords` | Blocks messages containing specific words |
+
+## Identifying fault-managed rules
+
+Fault-managed rules are prefixed with `[fault]` in your Server Settings. This makes it easy to tell which rules fault controls versus any rules you've created manually.
+
+## Listing your rules
+
+To see all AutoMod rules on your server — both fault-managed and manually created — run:
+
+```text
+,automod list
+```
+
+## Removing rules
+
+To disable a single fault-managed rule:
+
+```text
+,automod disable (rule)
+```
+
+To remove all fault-managed rules at once:
+
+```text
+,automod reset
+```
+
+<Warning>
+  `,automod reset` deletes every `[fault]`-prefixed rule. It does not affect rules you created manually in Server Settings.
+</Warning>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Antispam, anti-invites & mention limits" href="/automod/antispam">
+    Enable spam detection, block invite links, and cap mention counts.
+  </Card>
+  <Card title="Keyword blocklist" href="/automod/keywords">
+    Add and manage a list of words fault will automatically block.
+  </Card>
+  <Card title="Exemptions & disabling rules" href="/automod/exemptions">
+    Exempt specific roles or channels, or fully disable a rule.
+  </Card>
+</CardGroup>

@@ -1,0 +1,74 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "name": "fault",
+  "theme": "luma",
+  "colors": {
+    "primary": "#394b79"
+  },
+  "navbar": {
+    "primary": {
+      "type": "github",
+      "href": "https://github.com/offermillions/faultv2"
+    }
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "introduction",
+              "quickstart"
+            ]
+          },
+          {
+            "group": "Moderation",
+            "pages": [
+              "moderation/overview",
+              "moderation/cases",
+              "moderation/purge",
+              "moderation/channels"
+            ]
+          },
+          {
+            "group": "Auto Moderation",
+            "pages": [
+              "automod/overview",
+              "automod/antispam",
+              "automod/keywords",
+              "automod/exemptions"
+            ]
+          },
+          {
+            "group": "Server Setup",
+            "pages": [
+              "configuration/welcome-goodbye",
+              "configuration/autorole",
+              "configuration/prefix",
+              "configuration/fake-permissions"
+            ]
+          },
+          {
+            "group": "Features",
+            "pages": [
+              "features/tickets",
+              "features/levels",
+              "features/sticky-messages",
+              "features/pagination",
+              "features/utility"
+            ]
+          },
+          {
+            "group": "Scripting",
+            "pages": [
+              "scripting/overview",
+              "scripting/variables"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

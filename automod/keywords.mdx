@@ -1,0 +1,62 @@
+---
+title: "Block specific words using the fault keyword filter"
+description: "Build and manage a custom blocklist of words and phrases. fault automatically blocks any message containing a keyword you've added."
+---
+
+The keyword filter lets you maintain a list of words and phrases that fault will automatically block. When a member sends a message containing any keyword on your list, Discord's AutoMod system flags and removes it before other members see it.
+
+<Note>
+  Your server must have **Community** enabled before using keyword commands. All commands require the **Manage Server** permission.
+</Note>
+
+## Adding a keyword
+
+```text
+,automod keywords add (word)
+```
+
+**Example** — block messages containing "badword":
+
+```text
+,automod keywords add badword
+```
+
+Keywords are stored in lowercase. The filter is case-insensitive, so adding `BadWord` is the same as adding `badword`, and both will catch `BADWORD`, `Badword`, and `badword` in messages.
+
+**Limits:**
+- Maximum **60 characters** per keyword
+- Maximum **1000 keywords** total
+
+## Removing a keyword
+
+```text
+,automod keywords remove (word)
+```
+
+**Example** — stop blocking "badword":
+
+```text
+,automod keywords remove badword
+```
+
+## Viewing your keyword list
+
+```text
+,automod keywords list
+```
+
+This shows all keywords currently on your blocklist.
+
+## Tips
+
+<Tip>
+  You can add multi-word phrases as a single keyword, as long as the full phrase is under 60 characters.
+</Tip>
+
+<Warning>
+  Discord's keyword matching is exact — a keyword of `bad` will match any message containing the string "bad", including words like "badly" or "badminton". Add keywords carefully to avoid false positives.
+</Warning>
+
+## Exempting roles or channels
+
+If certain roles or channels should be able to use blocked words (for example, a moderation team discussing flagged content), you can exempt them from the keywords rule. See [Exemptions](/automod/exemptions).

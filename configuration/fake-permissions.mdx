@@ -1,0 +1,92 @@
+---
+title: "Fake permissions: grant command access without Discord perms"
+description: "Give roles access to fault commands without assigning real Discord permissions. Only the server owner can manage fake permissions."
+---
+
+Fake permissions let you grant roles access to fault commands without giving them actual Discord permissions. For example, you can allow a Moderator role to use `,ban` without granting them the real **Ban Members** Discord permission.
+
+<Warning>
+  Only the **server owner** can manage fake permissions. These commands are not available to other members, even administrators.
+</Warning>
+
+## Add fake permissions to a role
+
+```text
+,fakepermissions add (role) (permissions)
+```
+
+Pass one or more permission names as a comma-separated list.
+
+```text
+,fakepermissions add @Moderator kick_members, ban_members
+,fakepermissions add @Helper manage_messages
+```
+
+## Remove fake permissions from a role
+
+```text
+,fakepermissions remove (role) (permissions)
+```
+
+```text
+,fakepermissions remove @Moderator ban_members
+```
+
+Only the specified permissions are removed. Other fake permissions on the role remain intact.
+
+## List fake permissions
+
+```text
+,fakepermissions list [role]
+```
+
+- With a role: shows fake permissions assigned to that role.
+- Without a role: shows fake permissions for every role in the server.
+
+```text
+,fakepermissions list @Moderator
+,fakepermissions list
+```
+
+## Reset all fake permissions
+
+```text
+,fakepermissions reset
+```
+
+Removes all fake permissions from every role in the server. fault will ask you to confirm before proceeding.
+
+<Warning>
+  This action removes fake permissions from all roles at once and cannot be undone.
+</Warning>
+
+## Valid permission names
+
+| Permission name | Grants access to commands requiring |
+|---|---|
+| `kick_members` | Kick members |
+| `ban_members` | Ban members |
+| `manage_channels` | Manage channels |
+| `manage_guild` | Manage server |
+| `manage_messages` | Manage messages |
+| `manage_nicknames` | Manage nicknames |
+| `manage_roles` | Manage roles |
+| `manage_webhooks` | Manage webhooks |
+| `manage_emojis` | Manage emojis |
+| `moderate_members` | Timeout members |
+| `administrator` | All of the above |
+
+<Note>
+  Granting `administrator` via fake permissions gives a role access to all fault commands that check permissions — it does not grant real Discord administrator privileges.
+</Note>
+
+## Aliases
+
+The command has two shorter aliases:
+
+```text
+,fp add @Moderator kick_members
+,fakeperm list @Moderator
+```
+
+Both `fp` and `fakeperm` work the same as `fakepermissions`.
