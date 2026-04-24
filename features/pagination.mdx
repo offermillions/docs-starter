@@ -5,7 +5,7 @@ description: 'Turn any existing embed into a multi-page interactive message with
 icon: "book-open-reader"
 ---
 
-Pagination lets you attach multiple pages to an existing embed message. Members navigate between pages using ⬅ and ➡ buttons that fault adds to the message. This is useful for multi-section guides, FAQs, rules documents, or any content that would be too long for a single embed.
+Pagination attaches multiple pages to an embed. Members navigate with ⬅ ➡ buttons fault adds to the message.
 
 ## Creating a paginated embed
 
@@ -55,7 +55,7 @@ Pagination lets you attach multiple pages to an existing embed message. Members 
 
 ### Update a page
 
-Replace the content of a specific page. fault shows you a preview of the current page and asks for confirmation before saving.
+Replace the content of a specific page.
 
 ```text
 ,pagination update (message link) (page number) (script)
@@ -97,7 +97,7 @@ Remove all pagination setups in the server at once:
 
 ## Restoring navigation buttons
 
-If the ⬅ ➡ buttons are removed from a paginated message (for example, after a bot restart or accidental removal), you can restore them without reconfiguring everything:
+If the ⬅ ➡ buttons are removed, restore them without reconfiguring:
 
 ```text
 ,pagination restorereactions (message link)

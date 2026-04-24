@@ -5,7 +5,7 @@ description: "Automatically assign up to 5 roles to members when they join your 
 icon: "user-tag"
 ---
 
-Autorole automatically assigns one or more roles to every human member who joins your server. This is useful for granting a default member role, access to channels, or any other role you want new members to have from the moment they arrive.
+Autorole assigns roles to every human member who joins. Bots are skipped.
 
 <Note>
   All autorole commands require the **Manage Roles** permission.
@@ -39,7 +39,7 @@ You can add up to 5 roles to the autorole list. When a new member joins, fault a
 ,autorole remove (role)
 ```
 
-Removes a role from the autorole list. Members who already received the role are not affected.
+Removes a role from the autorole list. Members who already have the role are not affected.
 
 ```text
 ,autorole remove @Newcomer
@@ -60,8 +60,3 @@ Shows all roles currently configured for autorole.
 ```
 
 Removes all roles from the autorole list. Existing members are not affected.
-
-## Notes
-
-- **Bots are skipped.** When a bot joins your server, fault does not assign autoroles to it — only human members receive them.
-- **Alias:** `ar` — for example, `,ar add @Member`.

@@ -5,7 +5,7 @@ description: 'Set up a fully featured support ticket system with custom panels, 
 icon: "ticket"
 ---
 
-The fault ticket system lets your members open support tickets through button or dropdown menus. Each ticket gets its own channel, and when it's closed an HTML transcript is generated and sent to your log channel and the member who opened the ticket.
+The fault ticket system lets members open tickets through button or dropdown menus. Each ticket gets its own channel, and closing it generates an HTML transcript sent to your log channel and the member.
 
 ## Setting up a panel
 
@@ -76,8 +76,6 @@ Use `{user.name}` and `{user.id}` to include the opener's info in the channel na
 
 This would create channels like `ticket-username`.
 
-## Topic management
-
 | Command | Description |
 |---|---|
 | `,ticket topic add (panel) (label) [emoji]` | Add a topic option (max 5 per panel) |
@@ -110,11 +108,11 @@ These commands can be used by support staff or the member who opened the ticket.
 | `,ticket transfer (user)` | Transfer your claim to another staff member |
 | `,ticket priority (low/medium/high)` | Set the ticket priority |
 
-Setting a priority adds an emoji prefix to the channel name so staff can see urgency at a glance:
+Setting a priority adds an emoji prefix to the channel name:
 
-- 🟢 `low` — green circle prefix
-- 🟡 `medium` — yellow circle prefix
-- 🔴 `high` — red circle prefix
+- 🟢 `low`
+- 🟡 `medium`
+- 🔴 `high`
 
 ## Transcripts
 

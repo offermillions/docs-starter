@@ -5,7 +5,7 @@ description: "Use the fault script engine to send plain text or fully formatted 
 icon: "code"
 ---
 
-The fault script engine lets you compose Discord messages using a simple tag syntax. Instead of sending plain text, you can build multi-field embeds with custom colors, images, and clickable buttons — all from a single command argument. Scripts work anywhere fault accepts a `(script)` parameter.
+The fault script engine lets you build Discord messages using a simple tag syntax — plain text or full embeds with colors, images, and buttons, all from a single command argument.
 
 ## Where scripts are used
 
@@ -106,12 +106,7 @@ Sends an embed with a description. No color or title — minimal and clean.
 {embed}{title: Welcome!}{description: Welcome {user.mention} to **{guild}**! You are member #{guild.member_count}.}{color: #394b79}{thumbnail: {user.avatar}}{footer: Joined {guild.name}}
 ```
 
-This produces an embed with:
-- A title
-- A description mentioning the user and their member position
-- A custom accent color
-- The user's avatar as a thumbnail
-- A footer showing the server name
+This produces an embed with a title, description, custom color, user avatar thumbnail, and footer.
 
 ### Embed with an inline field
 
@@ -119,7 +114,7 @@ This produces an embed with:
 {embed}{description: Hello!}{field: Member Count && {guild.member_count} && inline}
 ```
 
-Adds a field below the description. The `inline` keyword places it side-by-side with other inline fields.
+Adds a field below the description. `inline` places it side-by-side with other inline fields.
 
 ### Embed with a button
 

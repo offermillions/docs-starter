@@ -6,12 +6,6 @@
   "colors": {
     "primary": "#394b79"
   },
-  "navbar": {
-    "primary": {
-      "type": "github",
-      "href": "https://github.com/offermillions/faultv2"
-    }
-  },
   "navigation": {
     "tabs": [
       {
@@ -20,32 +14,59 @@
           {
             "group": "Get Started",
             "icon": "rocket",
-            "pages": ["introduction", "quickstart"]
+            "pages": [
+              "introduction",
+              "quickstart"
+            ]
           },
           {
             "group": "Moderation",
             "icon": "shield",
-            "pages": ["moderation/overview", "moderation/cases", "moderation/purge", "moderation/channels"]
+            "pages": [
+              "moderation/overview",
+              "moderation/cases",
+              "moderation/purge",
+              "moderation/channels"
+            ]
           },
           {
             "group": "Auto Moderation",
             "icon": "robot",
-            "pages": ["automod/overview", "automod/antispam", "automod/keywords", "automod/exemptions"]
+            "pages": [
+              "automod/overview",
+              "automod/antispam",
+              "automod/keywords",
+              "automod/exemptions"
+            ]
           },
           {
             "group": "Server Setup",
             "icon": "gear",
-            "pages": ["configuration/welcome-goodbye", "configuration/autorole", "configuration/prefix", "configuration/fake-permissions"]
+            "pages": [
+              "configuration/welcome-goodbye",
+              "configuration/autorole",
+              "configuration/prefix",
+              "configuration/fake-permissions"
+            ]
           },
           {
             "group": "Features",
             "icon": "stars",
-            "pages": ["features/tickets", "features/levels", "features/sticky-messages", "features/pagination", "features/utility"]
+            "pages": [
+              "features/tickets",
+              "features/levels",
+              "features/sticky-messages",
+              "features/pagination",
+              "features/utility"
+            ]
           },
           {
             "group": "Scripting",
             "icon": "code",
-            "pages": ["scripting/overview", "scripting/variables"]
+            "pages": [
+              "scripting/overview",
+              "scripting/variables"
+            ]
           }
         ]
       }

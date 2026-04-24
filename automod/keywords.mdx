@@ -5,7 +5,7 @@ description: "Build and manage a custom blocklist of words and phrases. fault au
 icon: "ban"
 ---
 
-The keyword filter lets you maintain a list of words and phrases that fault will automatically block. When a member sends a message containing any keyword on your list, Discord's AutoMod system flags and removes it before other members see it.
+The keyword filter blocks messages containing words on your list. Discord's AutoMod removes them before other members see them.
 
 <Note>
   Your server must have **Community** enabled before using keyword commands. All commands require the **Manage Server** permission.
@@ -23,7 +23,7 @@ The keyword filter lets you maintain a list of words and phrases that fault will
 ,automod keywords add badword
 ```
 
-Keywords are stored in lowercase. The filter is case-insensitive, so adding `BadWord` is the same as adding `badword`, and both will catch `BADWORD`, `Badword`, and `badword` in messages.
+Keywords are stored in lowercase and matching is case-insensitive.
 
 **Limits:**
 - Maximum **60 characters** per keyword
@@ -41,13 +41,11 @@ Keywords are stored in lowercase. The filter is case-insensitive, so adding `Bad
 ,automod keywords remove badword
 ```
 
-## Viewing your keyword list
+## Viewing keywords
 
 ```text
 ,automod keywords list
 ```
-
-This shows all keywords currently on your blocklist.
 
 ## Tips
 

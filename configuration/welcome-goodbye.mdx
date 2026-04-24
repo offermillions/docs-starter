@@ -5,7 +5,7 @@ description: "Send automatic messages when members join, leave, or boost your se
 icon: "door-open"
 ---
 
-fault can post a message to one or more channels whenever a member joins your server, leaves it, or boosts it. Each message type is configured separately and supports the full fault scripting engine, so you can send plain text or richly formatted embeds.
+fault posts a message when members join, leave, or boost. Each type is configured separately and supports the script engine for plain text or embeds.
 
 <Note>
   All welcome, goodbye, and boost commands require the **Manage Channels** and **Manage Messages** permissions.
@@ -23,7 +23,7 @@ fault can post a message to one or more channels whenever a member joins your se
     ,welcome add (channel) (script)
     ```
 
-    The `(script)` is the message content. Use plain text or the fault scripting engine to build an embed.
+    The `(script)` is the message content — plain text or a fault script embed.
 
     **Example — plain text:**
 
@@ -128,8 +128,4 @@ fault can post a message to one or more channels whenever a member joins your se
   </Tab>
 </Tabs>
 
-## Scripting
-
-All three message types use the same scripting engine. You can send a plain text message, or use script tags to build embed fields, set colors, add thumbnails, and more.
-
-See the [scripting overview](/scripting/overview) for the full reference.
+All three message types use the same scripting engine. See the [scripting overview](/scripting/overview) for the full reference.

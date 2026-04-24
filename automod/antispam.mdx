@@ -5,7 +5,7 @@ description: "Use fault to toggle Discord's built-in spam detection, block invit
 icon: "shield-halved"
 ---
 
-fault gives you three commands for controlling message-based AutoMod rules: one for spam detection, one for invite links, and one for capping the number of mentions per message. Each creates a native Discord AutoMod rule that Discord enforces at the platform level.
+fault gives you three AutoMod commands: spam detection, invite blocking, and mention limits. Each creates a native Discord AutoMod rule.
 
 <Note>
   Your server must have **Community** enabled before using these commands. All commands require the **Manage Server** permission.
@@ -19,15 +19,11 @@ The `antispam` rule enables Discord's built-in spam detection. Running the comma
 ,automod antispam
 ```
 
-This is a toggle — if the rule is off, running the command turns it on. If the rule is already on, running it again turns it off.
+This is a toggle — running it again turns it off.
 
 ## Anti-invites
 
 The `antiinvites` rule blocks messages containing Discord invite links (`discord.gg/*`, `discord.com/invite/*`, and `discordapp.com/invite/*`). Like antispam, it toggles on and off.
-
-```text
-,automod antiinvites
-```
 
 <Tip>
   If you have channels where invite links should be allowed (such as a staff channel), you can exempt them. See [Exemptions](/automod/exemptions).

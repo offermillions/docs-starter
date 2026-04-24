@@ -5,7 +5,7 @@ description: "Prevent AutoMod rules from applying to specific roles or channels,
 icon: "circle-check"
 ---
 
-Sometimes a rule that's right for most of your server isn't right for every role or channel. fault lets you add exemptions to any fault-managed rule so that specific roles or channels are excluded from enforcement.
+fault lets you add exemptions to any fault-managed rule so specific roles or channels are excluded.
 
 <Note>
   Exemptions only work on fault-managed rules (those prefixed with `[fault]`). All commands require the **Manage Server** permission.
@@ -17,7 +17,7 @@ Sometimes a rule that's right for most of your server isn't right for every role
 ,automod exempt (rule) (role or channel)
 ```
 
-Pass the rule name and either a role mention or a channel mention. You can run the command multiple times to add more than one exemption to the same rule.
+You can run the command multiple times to add more than one exemption to the same rule.
 
 **Valid rule names:** `antispam`, `antiinvites`, `mentions`, `keywords`
 
@@ -62,7 +62,7 @@ To completely disable and delete one fault-managed rule:
 ,automod disable keywords
 ```
 
-Disabling a rule removes it from your server's AutoMod settings entirely. You can re-enable it at any time by running the original setup command again.
+Disabling a rule removes it from AutoMod entirely. Re-enable it by running the original setup command.
 
 ## Removing all fault-managed rules
 

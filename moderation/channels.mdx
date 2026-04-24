@@ -5,11 +5,9 @@ description: "Lock channels to prevent @everyone from sending, hide channels fro
 icon: "lock"
 ---
 
-fault provides three channel control commands: `,lock` / `,unlock` to prevent or restore message sending, `,hide` / `,reveal` to toggle channel visibility for a role or member, and `,slowmode` to rate-limit messages. All three commands require the **Manage Channels** permission.
+fault provides three channel control commands: `,lock` / `,unlock`, `,hide` / `,reveal`, and `,slowmode`. All require the **Manage Channels** permission.
 
-## Locking and unlocking channels
-
-Locking a channel sets the `@everyone` role's **Send Messages** permission to `Deny`, preventing regular members from posting. Unlocking restores it.
+## Locking channels
 
 ### Lock the current channel
 
@@ -41,7 +39,7 @@ Include a reason when locking — it appears in the audit log and helps your tea
 
 ## Hiding and revealing channels
 
-`,hide` sets the `view_channel` permission to `Deny` for the specified role or member, making the channel invisible to them. `,reveal` (also available as `,unhide`) reverses this.
+`,hide` sets `view_channel` to `Deny` for the specified role or member. `,reveal` (also `,unhide`) reverses it.
 
 ### Hide the current channel from @everyone
 
@@ -67,7 +65,7 @@ Include a reason when locking — it appears in the audit log and helps your tea
 ,reveal #announcements @Members
 ```
 
-When no role or member is specified, fault defaults to the `@everyone` role. When no channel is specified, the command targets the current channel.
+When no role or member is specified, fault defaults to `@everyone`. When no channel is specified, it targets the current channel.
 
 <Note>
 Like lock and unlock, hide and reveal also work on **category channels** — all text channels inside the category are updated simultaneously.
@@ -79,7 +77,7 @@ Hiding a channel from @everyone while other roles still have explicit `view_chan
 
 ## Setting slowmode
 
-Slowmode limits how often members can send messages in a channel. Omit the duration to disable slowmode if it is currently active.
+Slowmode limits how often members can send messages. Omit the duration to disable it.
 
 ### Set slowmode to 30 seconds
 

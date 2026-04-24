@@ -5,7 +5,7 @@ description: "Delete up to 1000 messages at once with targeted filters — by us
 icon: "trash"
 ---
 
-The `,purge` command (also available as `,clear`) lets you bulk-delete messages from the current channel. You can delete any messages at once, or narrow the deletion using one of many filter subcommands — by author, content, message type, and more.
+The `,purge` command (also available as `,clear`) bulk-deletes messages from the current channel. Narrow the deletion using filter subcommands — by author, content, message type, and more.
 
 All purge commands require the **Manage Messages** permission.
 
@@ -50,7 +50,7 @@ When `[amount]` is omitted, most subcommands default to scanning the last **100*
 ,purge user @username 200
 ```
 
-**Clear all bot messages (useful after a bot incident):**
+**Clear all bot messages:**
 
 ```text
 ,purge bots 500
@@ -68,7 +68,7 @@ When `[amount]` is omitted, most subcommands default to scanning the last **100*
 ,purge invites
 ```
 
-**Delete messages that start with a bot prefix to clean up command spam:**
+**Delete messages starting with a bot prefix:**
 
 ```text
 ,purge startswith ! 50
@@ -86,7 +86,7 @@ When `[amount]` is omitted, most subcommands default to scanning the last **100*
 ,purge regex ^\d{4,} 100
 ```
 
-This example removes any message that starts with four or more digits.
+Removes any message starting with four or more digits.
 
 <Tip>
 Use `purge user` after kicking or banning someone to quickly remove their recent messages without affecting other messages in the channel.

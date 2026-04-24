@@ -5,7 +5,7 @@ description: 'Reward active members with XP, automatic role rewards at set level
 icon: "chart-line"
 ---
 
-The fault leveling system tracks XP for every message your members send and automatically assigns role rewards when they hit certain levels. You can customize the XP rate, level-up messages, and whether members stack all earned roles or only hold their current one.
+The fault leveling system tracks XP per message and assigns role rewards at set levels. You can customize the XP rate, level-up messages, and role stacking behavior.
 
 ## How XP works
 
@@ -106,7 +106,7 @@ Available variables:
 | `{user.mention}` | Mentions the member who leveled up |
 | `{level.new_rank}` | The level the member just reached |
 
-The message template also supports the full script engine for embeds and advanced formatting.
+The message template supports the full script engine for embeds and advanced formatting.
 
 ### Where level-up messages are sent
 
@@ -153,7 +153,7 @@ The leaderboard shows the top 100 members by XP. Aliases: `,lb` and `,top`.
 
 ## Admin overrides
 
-Force-set a member's level or XP directly, bypassing normal earn mechanics:
+Force-set a member's level or XP directly:
 
 ```text
 ,setlevel @username 25

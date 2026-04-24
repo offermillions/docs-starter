@@ -5,11 +5,11 @@ description: "Set up a mod-log channel and mute roles, then warn, kick, ban, tim
 icon: "hammer"
 ---
 
-fault's moderation system gives you a full set of member action commands out of the box. Run `,setup` once to create the required roles and mod-log channel automatically, then use any moderation command — each action creates a permanent case record and sends the target a DM with the details.
+fault's moderation system gives you a full set of member action commands. Run `,setup` once to create the required roles and mod-log channel, then use any moderation command — each action creates a case record and DMs the target.
 
 ## First-time setup
 
-Run `,setup` before using mute commands. fault will create the following resources if they do not already exist:
+Run `,setup` before using mute commands. fault will create the following if they don't already exist:
 
 - A **mod-log** text channel (visible only to staff with Manage Server, Manage Guild, or Moderate Members)
 - A **Muted** role
@@ -108,6 +108,4 @@ These commands require roles configured via `,setup`.
 | `lock`, `unlock`, `hide`, `reveal`, `slowmode` | Manage Channels |
 | `setup` | Manage Server |
 
-## Cases and mod-log
-
-Every action automatically creates a numbered case. The case is posted to your configured mod-log channel and includes the action type, target, moderator, reason, and timestamp. You can view and update cases at any time — see [Cases](/moderation/cases) for details.
+Every action creates a numbered case posted to your mod-log channel. See [Cases](/moderation/cases) for details.

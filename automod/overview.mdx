@@ -5,7 +5,7 @@ description: "fault creates and manages native Discord AutoMod rules through sim
 icon: "robot"
 ---
 
-fault integrates directly with Discord's built-in AutoMod system. Rather than building a separate moderation layer, fault creates and manages native AutoMod rules on your behalf — so rules show up in your Server Settings like any other AutoMod rule, and Discord enforces them at the platform level.
+fault integrates with Discord's built-in AutoMod system. fault creates and manages native AutoMod rules — so they show up in your Server Settings like any other rule, enforced at the platform level.
 
 <Note>
   Your server must have **Community** enabled before you can use any automod commands. Enable it under **Server Settings → Enable Community**.
@@ -24,9 +24,9 @@ fault can create and control four AutoMod rules:
 | `mentions` | `,automod mentions (limit)` | Blocks messages with too many mentions |
 | `keywords` | `,automod keywords` | Blocks messages containing specific words |
 
-## Identifying fault-managed rules
+## Identifying fault rules
 
-Fault-managed rules are prefixed with `[fault]` in your Server Settings. This makes it easy to tell which rules fault controls versus any rules you've created manually.
+fault-managed rules are prefixed with `[fault]` in Server Settings.
 
 ## Listing your rules
 
