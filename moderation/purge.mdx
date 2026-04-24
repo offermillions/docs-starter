@@ -1,11 +1,11 @@
 ---
 title: "Bulk delete messages using fault's purge subcommands"
 sidebarTitle: "Purge"
-description: "Delete up to 1000 messages at once with targeted filters — by user, bots only, links, file attachments, regex patterns, and more."
+description: "Delete up to 1000 messages at once with targeted filters - by user, bots only, links, file attachments, regex patterns, and more."
 icon: "trash"
 ---
 
-The `,purge` command (also available as `,clear`) bulk-deletes messages from the current channel. Narrow the deletion using filter subcommands — by author, content, message type, and more.
+The `,purge` command (also available as `,clear`) bulk-deletes messages from the current channel. Narrow the deletion using filter subcommands - by author, content, message type, and more.
 
 All purge commands require the **Manage Messages** permission.
 
@@ -26,18 +26,18 @@ Discord only allows bulk deletion of messages up to 14 days old. Messages older 
 | Subcommand | Required args | Optional args | What it deletes |
 |---|---|---|---|
 | `purge user` | `(user)` | `[amount]` | Messages from a specific user |
-| `purge bots` | — | `[amount]` | Messages from bots only |
-| `purge humans` | — | `[amount]` | Messages from non-bots only |
+| `purge bots` | - | `[amount]` | Messages from bots only |
+| `purge humans` | - | `[amount]` | Messages from non-bots only |
 | `purge contains` | `(text)` | `[amount]` | Messages containing the given text |
-| `purge links` | — | `[amount]` | Messages with `http://` or `https://` URLs |
-| `purge invites` | — | `[amount]` | Messages with Discord invite links |
-| `purge embeds` | — | `[amount]` | Messages with embeds |
-| `purge files` | — | `[amount]` | Messages with file attachments |
-| `purge mentions` | — | `[amount]` | Messages with user or role mentions |
+| `purge links` | - | `[amount]` | Messages with `http://` or `https://` URLs |
+| `purge invites` | - | `[amount]` | Messages with Discord invite links |
+| `purge embeds` | - | `[amount]` | Messages with embeds |
+| `purge files` | - | `[amount]` | Messages with file attachments |
+| `purge mentions` | - | `[amount]` | Messages with user or role mentions |
 | `purge startswith` | `(text)` | `[amount]` | Messages beginning with the given text |
 | `purge endswith` | `(text)` | `[amount]` | Messages ending with the given text |
-| `purge reactions` | — | `[amount]` | Messages that have reactions |
-| `purge stickers` | — | `[amount]` | Messages containing stickers |
+| `purge reactions` | - | `[amount]` | Messages that have reactions |
+| `purge stickers` | - | `[amount]` | Messages containing stickers |
 | `purge regex` | `(pattern)` | `[amount]` | Messages matching a regex pattern |
 
 When `[amount]` is omitted, most subcommands default to scanning the last **100** messages.

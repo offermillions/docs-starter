@@ -23,15 +23,15 @@ fault posts a message when members join, leave, or boost. Each type is configure
     ,welcome add (channel) (script)
     ```
 
-    The `(script)` is the message content — plain text or a fault script embed.
+    The `(script)` is the message content - plain text or a fault script embed.
 
-    **Example — plain text:**
+    **Example - plain text:**
 
     ```text
     ,welcome add #welcome Hey {user.mention}, welcome to {guild}!
     ```
 
-    **Example — embed:**
+    **Example - embed:**
 
     ```text
     ,welcome add #welcome {embed}{description: Welcome {user.mention} to {guild}!}
@@ -50,7 +50,7 @@ fault posts a message when members join, leave, or boost. Each type is configure
     | `,welcome remove (channel)` | Remove the welcome message from a channel. |
     | `,welcome clear` | Remove all welcome messages from every channel. |
 
-    **Alias:** `welc` — for example, `,welc add #welcome (script)`.
+    **Alias:** `welc` - for example, `,welc add #welcome (script)`.
   </Tab>
   <Tab title="Goodbye">
     ## Goodbye messages
@@ -63,13 +63,13 @@ fault posts a message when members join, leave, or boost. Each type is configure
     ,goodbye add (channel) (script)
     ```
 
-    **Example — plain text:**
+    **Example - plain text:**
 
     ```text
     ,goodbye add #goodbye {user.name} has left the server.
     ```
 
-    **Example — embed:**
+    **Example - embed:**
 
     ```text
     ,goodbye add #goodbye {embed}{description: Goodbye {user.mention}, we'll miss you!}
@@ -88,7 +88,7 @@ fault posts a message when members join, leave, or boost. Each type is configure
     | `,goodbye remove (channel)` | Remove the goodbye message from a channel. |
     | `,goodbye clear` | Remove all goodbye messages from every channel. |
 
-    **Aliases:** `leave`, `farewell` — for example, `,leave add #goodbye (script)`.
+    **Aliases:** `leave`, `farewell` - for example, `,leave add #goodbye (script)`.
   </Tab>
   <Tab title="Boost">
     ## Boost messages
@@ -101,13 +101,13 @@ fault posts a message when members join, leave, or boost. Each type is configure
     ,boost add (channel) (script)
     ```
 
-    **Example — plain text:**
+    **Example - plain text:**
 
     ```text
     ,boost add #boosts {user.mention} just boosted the server!
     ```
 
-    **Example — embed:**
+    **Example - embed:**
 
     ```text
     ,boost add #boosts {embed}{description: Thank you {user.mention} for boosting {guild}!}

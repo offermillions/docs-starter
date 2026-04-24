@@ -1,28 +1,28 @@
 ---
 title: "Embed scripting engine: build rich Discord messages"
 sidebarTitle: "Overview"
-description: "Use the fault script engine to send plain text or fully formatted embeds with colors, fields, thumbnails, and buttons — anywhere a script is accepted."
+description: "Use the fault script engine to send plain text or fully formatted embeds with colors, fields, thumbnails, and buttons - anywhere a script is accepted."
 icon: "code"
 ---
 
-The fault script engine lets you build Discord messages using a simple tag syntax — plain text or full embeds with colors, images, and buttons, all from a single command argument.
+The fault script engine lets you build Discord messages using a simple tag syntax - plain text or full embeds with colors, images, and buttons, all from a single command argument.
 
 ## Where scripts are used
 
 You can use the fault script engine in:
 
-- **Welcome messages** — `,welcome add #channel (script)`
-- **Goodbye messages** — `,goodbye add #channel (script)`
-- **Boost messages** — `,boost add #channel (script)`
-- **Ticket messages** — `,ticket message (panel) (script)`
-- **Sticky messages** — `,sticky add #channel (script)`
-- **Pagination pages** — `,pagination add (link) (script)`
-- **Level-up messages** — `,levels message (template)`
-- **Embed preview** — `,createembed (script)`
+- **Welcome messages** - `,welcome add #channel (script)`
+- **Goodbye messages** - `,goodbye add #channel (script)`
+- **Boost messages** - `,boost add #channel (script)`
+- **Ticket messages** - `,ticket message (panel) (script)`
+- **Sticky messages** - `,sticky add #channel (script)`
+- **Pagination pages** - `,pagination add (link) (script)`
+- **Level-up messages** - `,levels message (template)`
+- **Embed preview** - `,createembed (script)`
 
 ## Script syntax
 
-Scripts are made up of **nodes** — tags in the format `{node: value}`. You chain them together in a single line; fault parses them left to right and builds the message.
+Scripts are made up of **nodes** - tags in the format `{node: value}`. You chain them together in a single line; fault parses them left to right and builds the message.
 
 ```text
 {node: value}{node: value}{node: value}
@@ -98,7 +98,7 @@ Sends a plain text message mentioning the user.
 {embed}{description: Welcome {user.mention} to {guild}!}
 ```
 
-Sends an embed with a description. No color or title — minimal and clean.
+Sends an embed with a description. No color or title - minimal and clean.
 
 ### Rich welcome embed
 
