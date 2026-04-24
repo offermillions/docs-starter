@@ -2,6 +2,7 @@
   "$schema": "https://mintlify.com/docs.json",
   "name": "fault",
   "theme": "luma",
+  "favicon": "/favicon.svg",
   "colors": {
     "primary": "#394b79"
   },
@@ -18,54 +19,33 @@
         "groups": [
           {
             "group": "Get Started",
-            "pages": [
-              "introduction",
-              "quickstart"
-            ]
+            "icon": "rocket",
+            "pages": ["introduction", "quickstart"]
           },
           {
             "group": "Moderation",
-            "pages": [
-              "moderation/overview",
-              "moderation/cases",
-              "moderation/purge",
-              "moderation/channels"
-            ]
+            "icon": "shield",
+            "pages": ["moderation/overview", "moderation/cases", "moderation/purge", "moderation/channels"]
           },
           {
             "group": "Auto Moderation",
-            "pages": [
-              "automod/overview",
-              "automod/antispam",
-              "automod/keywords",
-              "automod/exemptions"
-            ]
+            "icon": "robot",
+            "pages": ["automod/overview", "automod/antispam", "automod/keywords", "automod/exemptions"]
           },
           {
             "group": "Server Setup",
-            "pages": [
-              "configuration/welcome-goodbye",
-              "configuration/autorole",
-              "configuration/prefix",
-              "configuration/fake-permissions"
-            ]
+            "icon": "gear",
+            "pages": ["configuration/welcome-goodbye", "configuration/autorole", "configuration/prefix", "configuration/fake-permissions"]
           },
           {
             "group": "Features",
-            "pages": [
-              "features/tickets",
-              "features/levels",
-              "features/sticky-messages",
-              "features/pagination",
-              "features/utility"
-            ]
+            "icon": "stars",
+            "pages": ["features/tickets", "features/levels", "features/sticky-messages", "features/pagination", "features/utility"]
           },
           {
             "group": "Scripting",
-            "pages": [
-              "scripting/overview",
-              "scripting/variables"
-            ]
+            "icon": "code",
+            "pages": ["scripting/overview", "scripting/variables"]
           }
         ]
       }
